@@ -26,3 +26,13 @@ export const updateTodo = (todo) => {
   })
     .then(response => response.json())
 }
+
+export const destroyTodo = (id) => {
+  return fetch(`http://localhost:8081/todos/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+  })
+}
