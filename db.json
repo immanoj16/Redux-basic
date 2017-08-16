@@ -8,17 +8,17 @@
     {
       "id": 2,
       "name": "start server",
-      "isComplete": false
+      "isComplete": true
     },
     {
       "id": 3,
       "name": "Load data into app",
-      "isComplete": false
+      "isComplete": true
     },
     {
       "id": 4,
       "name": "Add records",
-      "isComplete": false
+      "isComplete": true
     },
     {
       "id": 5,
@@ -32,12 +32,12 @@
     },
     {
       "name": "Another Todo",
-      "isComplete": false,
+      "isComplete": true,
       "id": 7
     },
     {
       "name": "file",
-      "isComplete": false,
+      "isComplete": true,
       "id": 8
     },
     {

@@ -1,15 +1,18 @@
-import {createTodo, getTodos} from "../lib/todoServices"
+import {createTodo, getTodos, updateTodo} from "../lib/todoServices"
 import { showMessage} from "./messages"
 
 export const TODO_ADD = 'TODO_ADD'
 export const TODOS_LOAD = 'TODOS_LOAD'
 const CURRENT_UPDATE = 'CURRENT_UPDATE'
+export const TODO_REPLACE = 'TODO_REPLACE'
 
 export const updateCurrent = (val) => ({type: CURRENT_UPDATE, payload: val})
 
 export const loadTodos = (todos) => ({type: TODOS_LOAD, payload: todos})
 
 export const addTodo = (todo) => ({type: TODO_ADD, payload: todo})
+
+export const replaceTodo = (todo) => ({type: TODO_REPLACE, payload: todo})
 
 export const fetchTodos = () => {
   return (dispatch) => {
@@ -24,6 +27,17 @@ export const saveTodo = (name) => {
     dispatch(showMessage('Saving Todo'))
     createTodo(name)
       .then(response => dispatch(addTodo(response)))
+  }
+}
+
+export const toggleTodo = (id) => {
+  return (dispatch, getState) => {
+    dispatch(showMessage('Saving todo update'))
+    const {todos} = getState().todo
+    const todo = todos.find(t => t.id === id)
+    const toggled = {...todo, isComplete: !todo.isComplete}
+    updateTodo(toggled)
+      .then(response => dispatch(replaceTodo(response)))
   }
 }
 
@@ -42,6 +56,14 @@ export default (state = initState, action) => {
 
     case TODOS_LOAD:
       return {...state, todos: action.payload}
+
+    case TODO_REPLACE:
+      return {
+        ...state,
+        todos: state.todos.map(t => t.id === action.payload.id ? action.payload : t
+        )
+      }
+
     default:
       return state
   }
