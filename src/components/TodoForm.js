@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import {updateCurrent} from "../reducers/todo"
 
 const TodoForm = (props) => {
-  console.log('Form rendering')
   const { currentTodo, updateCurrent } = props
   const handleInputChange = (e) => {
     const val = e.target.value
