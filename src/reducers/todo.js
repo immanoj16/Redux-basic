@@ -1,4 +1,5 @@
 import {createTodo, getTodos} from "../lib/todoServices"
+import { showMessage} from "./messages"
 
 const TODO_ADD = 'TODO_ADD'
 const TODOS_LOAD = 'TODOS_LOAD'
@@ -19,6 +20,7 @@ export const fetchTodos = () => {
 
 export const saveTodo = (name) => {
   return (dispatch) => {
+    dispatch(showMessage('Saving Todo'))
     createTodo(name)
       .then(response => dispatch(addTodo(response)))
   }

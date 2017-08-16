@@ -1,4 +1,7 @@
 import React from 'react'
+import { connect } from 'react-redux'
+
+import { showMessage } from "../reducers/messages"
 
 const Message = ({message}) => (
   message
@@ -6,4 +9,7 @@ const Message = ({message}) => (
     : null
 )
 
-export default Message
+export default connect(
+  (state) => ({message: state.message}),
+  { showMessage }
+)(Message)
