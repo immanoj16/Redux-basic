@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "configure server",
-      "isComplete": true
+      "isComplete": false
     },
     {
       "id": 2,
@@ -13,12 +13,27 @@
     {
       "id": 3,
       "name": "Load data into app",
-      "isComplete": false
+      "isComplete": true
     },
     {
       "id": 4,
       "name": "Add records",
       "isComplete": false
+    },
+    {
+      "name": "New Todo",
+      "isComplete": false,
+      "id": 5
+    },
+    {
+      "name": "imfja",
+      "isComplete": false,
+      "id": 6
+    },
+    {
+      "name": "mere dil",
+      "isComplete": false,
+      "id": 7
     }
   ]
 }
