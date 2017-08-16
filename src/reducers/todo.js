@@ -1,14 +1,22 @@
+import { getTodos } from "../lib/todoServices"
+
 const TODO_ADD = 'TODO_ADD'
+const TODOS_LOAD = 'TODOS_LOAD'
 const CURRENT_UPDATE = 'CURRENT_UPDATE'
 
 export const updateCurrent = (val) => ({type: CURRENT_UPDATE, payload: val})
 
+export const loadTodos = (todos) => ({type: TODOS_LOAD, payload: todos})
+
+export const fetchTodos = () => {
+  return (dispatch) => {
+    getTodos()
+      .then(todos => dispatch(loadTodos(todos)))
+  }
+}
+
 const initState = {
-  todos: [
-    {id: 1, name: 'Render static UI', isComplete: true},
-    {id: 2, name: 'Create initial state', isComplete: true},
-    {id: 3, name: 'Render based on state', isComplete: true}
-  ],
+  todos: [],
   currentTodo: ''
 }
 
@@ -19,6 +27,9 @@ export default (state = initState, action) => {
 
     case CURRENT_UPDATE:
       return {...state, currentTodo: action.payload}
+
+    case TODOS_LOAD:
+      return {...state, todos: action.payload}
     default:
       return state
   }
