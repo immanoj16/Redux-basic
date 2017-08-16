@@ -1,8 +1,8 @@
 import {createTodo, getTodos} from "../lib/todoServices"
 import { showMessage} from "./messages"
 
-const TODO_ADD = 'TODO_ADD'
-const TODOS_LOAD = 'TODOS_LOAD'
+export const TODO_ADD = 'TODO_ADD'
+export const TODOS_LOAD = 'TODOS_LOAD'
 const CURRENT_UPDATE = 'CURRENT_UPDATE'
 
 export const updateCurrent = (val) => ({type: CURRENT_UPDATE, payload: val})
@@ -13,6 +13,7 @@ export const addTodo = (todo) => ({type: TODO_ADD, payload: todo})
 
 export const fetchTodos = () => {
   return (dispatch) => {
+    dispatch(showMessage('Loading Todos'))
     getTodos()
       .then(todos => dispatch(loadTodos(todos)))
   }
