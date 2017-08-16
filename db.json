@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "configure server",
-      "isComplete": false
+      "isComplete": true
     },
     {
       "id": 2,
